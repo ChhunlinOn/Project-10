@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const BookCatalogPage = () => {
-  const [book, setbooks] = useState([]);
+  const [books, setBooks] = useState([]);
 
   const URL = `http://localhost:3000/api/books`;
   const Token = localStorage.getItem("token");
@@ -19,8 +19,7 @@ const BookCatalogPage = () => {
       try {
         const result = await axios.get(URL, obj);
         const data = result.data;
-        console.log(data);
-        setbooks(data);
+        setBooks(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -50,17 +49,17 @@ const BookCatalogPage = () => {
           </tr>
         </thead>
         <tbody>
-          {book.map((books) => (
+          {books.map((book) => (
             <tr className="border-b-2 border-gray-300">
               <td className="py-4">
                 <div className="py-3 ml-2 bg-cyan-300 rounded-lg">View</div>
               </td>
-              <td>{books.isbn}</td>
-              <td>{books.title}</td>
-              <td>{books.authors}</td>
-              <td>{books.publisher}</td>
-              <td>{books.genre}</td>
-              <td>{books.shelf_location}</td>
+              <td>{book.isbn}</td>
+              <td>{book.title}</td>
+              <td>{book.authors}</td>
+              <td>{book.publisher}</td>
+              <td>{book.genre}</td>
+              <td>{book.shelf_location}</td>
             </tr>
           ))}
         </tbody>
