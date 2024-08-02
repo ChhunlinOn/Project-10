@@ -10,6 +10,7 @@ import UserAccountInfoPage from "./pages/userAccount/UserAccountInfoPage";
 import CreateUserAccountPage from "./pages/userAccount/CreateUserAccountPage";
 import AppLayout from "./components/AppLayout";
 import MemberPage from "./pages/member/MemberPage";
+import CreateListAccount from "./pages/UserAcc/CreateListAccount";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/user-account">
+        <Route index element ={<CreateListAccount/>}/>
           <Route index element={<UserAccountPage />} />
           <Route path=":id" element={<UserAccountInfoPage />} />
           <Route path="new" element={<CreateUserAccountPage />} />
