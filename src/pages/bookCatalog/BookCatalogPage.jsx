@@ -32,7 +32,7 @@ const BookCatalogPage = () => {
     <div className="flex justify-center bg-gray-100 flex-col">
       <h1 className="text-3xl font-bold text-left mb-8">Book Catalogs</h1>
       <nav className="mb-8">
-        <Link to="" className="p-4 bg-cyan-300 rounded-lg">
+        <Link to="/create-book-catalog" className="p-4 bg-cyan-300 rounded-lg">
           Create
         </Link>
       </nav>
