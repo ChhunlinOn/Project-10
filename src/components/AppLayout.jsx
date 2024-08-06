@@ -14,7 +14,7 @@ function AppLayout() {
   return (
     <PrivateRoute>
       <div className="bg-gray-100 flex">
-        <div className="w-64 h-screen bg-gray-800 text-white flex-shrink-0">
+        <div className="w-64 min-h-svh bg-gray-800 text-white flex-shrink-0">
           <div className="p-4 text-center text-2xl font-semibold border-b border-gray-700">
             WMAD
           </div>
