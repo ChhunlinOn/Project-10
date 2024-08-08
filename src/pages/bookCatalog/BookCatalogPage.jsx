@@ -51,9 +51,9 @@ const BookCatalogPage = () => {
         <tbody>
           {books.map((book) => (
             <tr className="border-b-2 border-gray-300">
-              <td className="py-4">
-                <div className="py-3 ml-2 bg-cyan-300 rounded-lg">View</div>
-              </td>
+              <nav className="py-4 px-3">
+                <Link to={`/book-catalog/${book.id}`} className="py-3 px-5 ml-2 bg-cyan-300 rounded-lg">View</Link>
+              </nav>
               <td>{book.isbn}</td>
               <td>{book.title}</td>
               <td>{book.authors}</td>
