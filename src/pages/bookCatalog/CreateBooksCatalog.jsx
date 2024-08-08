@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function FormTextbox(props){
@@ -108,7 +108,7 @@ function CreateBookCatalog(){
                     </div>
                 </div>
                 <div >
-                    {/* <button type="cancel" className="mt-8 h-12 bg-zinc-400 w-28  text-1xl text-white  mr-5 rounded-lg">Cancel</button> */}
+                    <Link to="/book-catalog" className="mt-8 h-12 p-4 bg-zinc-400 w-28  text-1xl text-white  mr-5 rounded-lg">Cancel</Link>
                     <button className="mt-4 h-12 bg-sky-500 w-24  text-1xl text-white rounded-lg">Save</button>
                 </div>
             </form >
