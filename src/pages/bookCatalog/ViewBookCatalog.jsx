@@ -1,11 +1,22 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+export function Columns(props) {
+  return (
+    <tr className="border-b-2 border-b-slate-300">
+      <th key={props.name} className="p-5">{props.name}</th>
+      <td className={props.textcolor}>{props.data}</td>
+    </tr>
+  );
+}
 
 function Viewbookcatalog() {
   const { id } = useParams();
   const [info, setInfo] = useState(null);
+  const [deleted, setDeleted] = useState(false); // State to track if the book is deleted
 
   const URL = `http://localhost:3000/api/books/${id}`;
   const Token = localStorage.getItem("token");
@@ -13,7 +24,7 @@ function Viewbookcatalog() {
     method: "GET",
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${Token}`, // Bearer token
+      Authorization: `Bearer ${Token}`,
     },
   };
 
@@ -21,18 +32,36 @@ function Viewbookcatalog() {
     const fetchData = async () => {
       try {
         const result = await axios.get(URL, obj);
-        const data = result.data;
-        setInfo(data);
+        setInfo(result.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [id]); // Include `id` in the dependency array
+  }, []);
 
   if (!info) {
     return <div>Loading...</div>;
+  }
+
+  async function deleteBook() {
+    try {
+      const result = await axios.delete(URL, { headers: obj.headers });
+      if (result.status === 200) {
+        toast.success("Book deleted successfully!", {
+          position: "top-center",
+          autoClose: 5000,
+        });
+        setDeleted(true); // Hide columns by setting `deleted` to true
+      }
+    } catch (error) {
+      toast.error("Failed to delete the book. Please try again.", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      console.error("Error deleting data:", error);
+    }
   }
 
   return (
@@ -45,61 +74,37 @@ function Viewbookcatalog() {
         <button className="text-1xl font-bold bg-blue-400 rounded-md mt-8 px-5 text-white">
           Update
         </button>
-        <button  className="text-1xl font-bold bg-red-400 rounded-md mt-8 py-4 px-5 text-white">
+        <button onClick={deleteBook} className="text-1xl font-bold bg-red-400 rounded-md mt-8 py-4 px-5 text-white">
           Delete
         </button>
       </div>
 
-      <table className="border-collapse border w-full mt-2 text-center">
-        <thead className="">
+      {!deleted && (
+        <table className="border-collapse border w-full mt-2 text-center">
+          <thead>
+            <Columns name="ISBN" data={info?.isbn} />
+            <Columns name="Title" data={info?.title} />
+            <Columns name="Authors" data={info?.authors} />
+            <Columns name="Publisher" data={info?.publisher} />
+            <Columns name="Publication Year" data={info?.publication_year} />
+            <Columns name="Edition" data={info?.edition} />
+            <Columns name="Genre" data={info?.genre} />
+            <Columns name="Language" data={info?.language} />
+            <Columns name="Number of Pages" data={info?.number_of_pages} textcolor="text-blue-400 font-bold" />
+            <Columns name="Shelf Location" data={info?.shelf_location} />
+            <Columns name="Description" data={info?.description} />
+          </thead>
+        </table>
+      )}
 
-            <tr className="border-b-2 border-b-slate-300">
-            <th className="p-5">ISBN</th>
-            <td>{info.isbn}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Title</th>
-            <td>{info.title}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Authors</th>
-            <td>{info.authors}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Publisher</th>
-            <td>{info.publisher}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Publication Year</th>
-            <td>{info.publication_year}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Edition</th>
-            <td>{info.edition}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Genre</th>
-            <td>{info.genre}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Language</th>
-            <td>{info.language}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Number of Pages</th>
-            <td className="text-blue-400 font-bold">{info.number_of_pages}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Shelf Location</th>
-            <td>{info.shelf_location}</td>
-            </tr>
-            <tr className="border-b-2 border-b-slate-300 ">
-            <th className="p-5">Description</th>
-            <td>{info.description}</td>
-            </tr>
-          
-        </thead>
-      </table> 
+      <ToastContainer
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
     </div>
   );
 }
