@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Button from "../../components/Button";
 
 const MemberInfo = () => {
   const [information, setInformation] = useState();
-  const { id } = useParams();
+  const { memberID } = useParams();
   const navigate = useNavigate();
-  const url = `http://localhost:3000/api/members/${id}`;
+  const url = `http://localhost:3000/api/members/${memberID}`;
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const MemberInfo = () => {
       }
     };
     fetchInfo();
-  }, [id, url, token]);
+  }, [memberID, url, token]);
   if (!information) {
     return <div>Loading</div>;
   }
@@ -39,16 +40,10 @@ const MemberInfo = () => {
     <div className="bg-gray-150 min-h-screen">
       <h1 className="text-3xl font-bold">Member information</h1>
       <div className="flex gap-5 mb-4">
-        <button className="text-1xl font-bold bg-gray-600 rounded-md mt-8 px-7 text-white">
-          Back
-        </button>
-        <button className="text-1xl font-bold bg-blue-600 rounded-md mt-8 px-5 text-white">
-          update
-        </button>
+        <Button name="Back" bgColor="bg-gray-600"/>
+        <Button name="Update" bgColor="bg-blue-600"/>
         <button
           onClick={(e) => {
-            const url = `http://localhost:3000/api/members/${id}`;
-            const token = localStorage.getItem("token");
             const deleteInfo = async () => {
               try {
                 const response = await fetch(url, {
