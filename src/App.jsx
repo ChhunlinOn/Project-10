@@ -25,8 +25,7 @@ function App() {
           <Route path="new" element={<CreateUserAccountPage />} />
         </Route>
         <Route path="/book-catalog" element={<BookCatalogPage />} />
-        <Route path="/create-book-catalog" element={<CreateBookCatalog />} />
-        <Route path="/book-issue" element={<BookIssuePage />} />
+        <Route path="/book-catalog/create" element={<CreateBookCatalog />} />        <Route path="/book-issue" element={<BookIssuePage />} />
         <Route path="/member" element={<MemberPage />} />
       </Route>
     </Routes>

@@ -32,7 +32,7 @@ const BookCatalogPage = () => {
     <div className="flex justify-center bg-gray-100 flex-col">
       <h1 className="text-3xl font-bold text-left mb-8">Book Catalogs</h1>
       <nav className="mb-8">
-        <Link to="/create-book-catalog" className="p-4 bg-cyan-300 rounded-lg">
+        <Link to="/book-catalog/create" className="p-4 bg-cyan-300 rounded-lg">
           Create
         </Link>
       </nav>
@@ -50,7 +50,7 @@ const BookCatalogPage = () => {
         </thead>
         <tbody>
           {books.map((book) => (
-            <tr className="border-b-2 border-gray-300">
+            <tr key={book.id} className="border-b-2 border-gray-300">
               <td className="py-4">
                 <div className="py-3 ml-2 bg-cyan-300 rounded-lg">View</div>
               </td>
