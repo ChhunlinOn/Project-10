@@ -10,8 +10,7 @@ import UserAccountInfoPage from "./pages/userAccount/UserAccountInfoPage";
 import CreateUserAccountPage from "./pages/userAccount/CreateUserAccountPage";
 import AppLayout from "./components/AppLayout";
 import MemberPage from "./pages/member/MemberPage";
-import CreateNewBookissue from "./pages/CreateNewBookIssue/CreateNewbookissue";
-
+import BookIssueForm from "./pages/bookIssue/CreateNewbookissue";
 function App() {
   return (
     <Routes>
@@ -26,7 +25,7 @@ function App() {
         </Route>
         <Route path="/book-catalog" element={<BookCatalogPage />} />
         <Route path="/book-issue" element={<BookIssuePage />} />
-        <Route path="/CreateNewBookIssue" element={<CreateNewBookissue />} />
+        <Route path="/CreateNewBookIssue" element={<BookIssueForm />} />
         <Route path="/member" element={<MemberPage />} />
       </Route>
     </Routes>
