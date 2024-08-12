@@ -6,7 +6,7 @@ import BookCatalogPage from "./pages/bookCatalog/BookCatalogPage";
 import BookIssuePage from "./pages/bookIssue/BookIssuePage";
 import LoginPage from "./pages/auth/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import UserAccountInfoPage from "./pages/userAccount/UserAccountInfoPage";
+import AccountInformation from "./pages/UserAcc/Accountinformation";
 import CreateUserAccountPage from "./pages/userAccount/CreateUserAccountPage";
 import AppLayout from "./components/AppLayout";
 import MemberPage from "./pages/member/MemberPage";
@@ -25,7 +25,7 @@ function App() {
         <Route path="/user-account">
         <Route index element ={<CreateListAccount/>}/>
           <Route index element={<UserAccountPage />} />
-          <Route path=":id" element={<UserAccountInfoPage />} />
+          <Route path=":id" element={<AccountInformation />} />
           <Route path="new" element={<CreateUserAccountPage />} />
         </Route>
         <Route path="/book-catalog" element={<BookCatalogPage />} />
