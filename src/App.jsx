@@ -11,6 +11,10 @@ import CreateUserAccountPage from "./pages/userAccount/CreateUserAccountPage";
 import AppLayout from "./components/AppLayout";
 import MemberPage from "./pages/member/MemberPage";
 import BookIssueForm from "./pages/bookIssue/CreateNewbookissue";
+import CreateListAccount from "./pages/UserAcc/CreateListAccount";
+import Viewbookcatalog from "./pages/bookCatalog/ViewBookCatalog";
+import CreateBookCatalog from "./pages/bookCatalog/CreateBooksCatalog";
+
 function App() {
   return (
     <Routes>
@@ -19,13 +23,17 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/user-account">
+        <Route index element ={<CreateListAccount/>}/>
           <Route index element={<UserAccountPage />} />
           <Route path=":id" element={<UserAccountInfoPage />} />
           <Route path="new" element={<CreateUserAccountPage />} />
         </Route>
         <Route path="/book-catalog" element={<BookCatalogPage />} />
+        <Route path="/book-catalog/:id" element={<Viewbookcatalog />} />
         <Route path="/book-issue" element={<BookIssuePage />} />
         <Route path="/CreateNewBookIssue" element={<BookIssueForm />} />
+        <Route path="/book-catalog/create" element={<CreateBookCatalog />} />        
+          <Route path="/book-issue" element={<BookIssuePage />} />
         <Route path="/member" element={<MemberPage />} />
       </Route>
     </Routes>
