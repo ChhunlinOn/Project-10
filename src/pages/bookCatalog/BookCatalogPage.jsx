@@ -32,7 +32,7 @@ const BookCatalogPage = () => {
     <div className="flex justify-center bg-gray-100 flex-col">
       <h1 className="text-3xl font-bold text-left mb-8">Book Catalogs</h1>
       <nav className="mb-8">
-        <Link to="" className="p-4 bg-cyan-300 rounded-lg">
+        <Link to="/book-catalog/create" className="p-4 bg-cyan-300 rounded-lg">
           Create
         </Link>
       </nav>
@@ -54,6 +54,10 @@ const BookCatalogPage = () => {
               <nav className="py-4 px-3">
                 <Link to={`/book-catalog/${book.id}`} className="py-3 px-5 ml-2 bg-cyan-300 rounded-lg">View</Link>
               </nav>
+            <tr key={book.id} className="border-b-2 border-gray-300">
+              <td className="py-4">
+                <div className="py-3 ml-2 bg-cyan-300 rounded-lg">View</div>
+              </td>
               <td>{book.isbn}</td>
               <td>{book.title}</td>
               <td>{book.authors}</td>
