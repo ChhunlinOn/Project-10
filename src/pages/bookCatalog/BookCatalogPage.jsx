@@ -54,10 +54,6 @@ const BookCatalogPage = () => {
               <nav className="py-4 px-3">
                 <Link to={`/book-catalog/${book.id}`} className="py-3 px-5 ml-2 bg-cyan-300 rounded-lg">View</Link>
               </nav>
-            <tr key={book.id} className="border-b-2 border-gray-300">
-              <td className="py-4">
-                <div className="py-3 ml-2 bg-cyan-300 rounded-lg">View</div>
-              </td>
               <td>{book.isbn}</td>
               <td>{book.title}</td>
               <td>{book.authors}</td>
