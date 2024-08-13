@@ -1,17 +1,15 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import DashboardPage from "./pages/core/DashboardPage";
-import UserAccountPage from "./pages/userAccount/UserAccountPage";
 import BookCatalogPage from "./pages/bookCatalog/BookCatalogPage";
 import BookIssuePage from "./pages/bookIssue/BookIssuePage";
 import LoginPage from "./pages/auth/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import AccountInformation from "./pages/UserAcc/Accountinformation";
-import CreateUserAccountPage from "./pages/userAccount/CreateUserAccountPage";
+import UserAccountlistPage from "./pages/UserAcc/UserAccountlistPage";
 import AppLayout from "./components/AppLayout";
+import UserAccountPage from "./pages/UserAcc/UserAccountPage";
 import MemberPage from "./pages/member/MemberPage";
 import BookIssueForm from "./pages/bookIssue/CreateNewbookissue";
-import CreateListAccount from "./pages/UserAcc/CreateListAccount";
 import Viewbookcatalog from "./pages/bookCatalog/ViewBookCatalog";
 import CreateBookCatalog from "./pages/bookCatalog/CreateBooksCatalog";
 
@@ -23,10 +21,9 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/user-account">
-        <Route index element ={<CreateListAccount/>}/>
-          <Route index element={<UserAccountPage />} />
-          <Route path=":id" element={<AccountInformation />} />
-          <Route path="new" element={<CreateUserAccountPage />} />
+          <Route index element={<UserAccountlistPage />} />
+          <Route path=":id" element={<UserAccountPage />} />
+
         </Route>
         <Route path="/book-catalog" element={<BookCatalogPage />} />
         <Route path="/book-catalog/:id" element={<Viewbookcatalog />} />
@@ -39,5 +36,4 @@ function App() {
     </Routes>
   );
 }
-
 export default App;
