@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const AccountInformation = () => {
+const UserAccountPage = () => {
   const [user, setUser] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate(); 
@@ -30,7 +30,6 @@ const AccountInformation = () => {
   if (!user) {
     return <div>Loading...</div>;
   }
-
   const Delete = async () => {
     const userConfirmed = window.confirm("Would you want to delete?");
     if (userConfirmed) {
@@ -47,7 +46,6 @@ const AccountInformation = () => {
       }
     }
   };
-
   return (
     <div className="bg-gray-150 min-h-screen">
       <h1 className="text-3xl font-bold">Account Information {id}</h1>
@@ -96,4 +94,4 @@ const AccountInformation = () => {
   );
 };
 
-export default AccountInformation;
+export default UserAccountPage;
