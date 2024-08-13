@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import ButtonView from "./ButtonView";
 
 const URL = `http://localhost:3000/api/book_issues`;
 const token = localStorage.getItem("token");
-
-
 function BookIssueTable() {
   const [books, setBooks] = useState([]);
 
@@ -37,15 +36,11 @@ function BookIssueTable() {
       <tbody>
         {books.map((book, i) => (
           <tr key={i}>
-            <td className="p-3 border border-slate-300">View</td>
+            <td className="p-3 border border-slate-300"><ButtonView/></td>
             <td className="p-3 border border-slate-300">{book.book.isbn}</td>
             <td className="p-3 border border-slate-300">{book.book.title}</td>
-            <td className="p-3 border border-slate-300">
-              {book.member.fullname}
-            </td>
-            <td className="p-3 border border-slate-300">
-              {book.processed_by.username}
-            </td>
+            <td className="p-3 border border-slate-300">{book.member.fullname} </td>
+            <td className="p-3 border border-slate-300">{book.processed_by.username} </td>
             <td className="p-3 border border-slate-300">{book.issue_date}</td>
             <td className="p-3 border border-slate-300">{book.due_date}</td>
             <td className="p-3 border border-slate-300">{book.return_date}</td>
