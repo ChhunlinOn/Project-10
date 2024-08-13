@@ -9,12 +9,14 @@ import UserAccountlistPage from "./pages/UserAcc/UserAccountlistPage";
 import AppLayout from "./components/AppLayout";
 import UserAccountPage from "./pages/UserAcc/UserAccountPage";
 import MemberPage from "./pages/member/MemberPage";
+import MemberInfo from "./pages/member/Information";
 import BookIssueForm from "./pages/bookIssue/CreateNewbookissue";
 import Viewbookcatalog from "./pages/bookCatalog/ViewBookCatalog";
 import CreateBookCatalog from "./pages/bookCatalog/CreateBooksCatalog";
 
 function App() {
   return (
+   
     <Routes>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/login" element={<LoginPage />} />
@@ -32,6 +34,9 @@ function App() {
         <Route path="/book-catalog/create" element={<CreateBookCatalog />} />        
           <Route path="/book-issue" element={<BookIssuePage />} />
         <Route path="/member" element={<MemberPage />} />
+        <Route path="/member/:memberID" element={< MemberInfo/>} />
+          {/* <Route path="/member/information/:id" element={<Information/>} /> */}
+        
       </Route>
     </Routes>
   );
