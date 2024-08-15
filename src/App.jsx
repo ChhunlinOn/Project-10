@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import DashboardPage from "./pages/core/DashboardPage";
-import BookCatalogPage from "./pages/bookCatalog/BookCatalogPage";
 import BookIssuePage from "./pages/bookIssue/BookIssuePage";
 import LoginPage from "./pages/auth/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -13,6 +12,7 @@ import MemberInfo from "./pages/member/Information";
 import BookIssueForm from "./pages/bookIssue/CreateNewbookissue";
 import Viewbookcatalog from "./pages/bookCatalog/ViewBookCatalog";
 import CreateBookCatalog from "./pages/bookCatalog/CreateBooksCatalog";
+import BookCatalogPage from "./pages/bookCatalog/BookCatalogPage";
 
 function App() {
   return (
