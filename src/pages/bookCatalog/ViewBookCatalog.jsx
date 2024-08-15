@@ -18,7 +18,7 @@ function Viewbookcatalog() {
   const [info, setInfo] = useState(null);
   const [deleted, setDeleted] = useState(false); // State to track if the book is deleted
 
-  const URL = `http://localhost:3000/api/books/${id}`;
+  const URL = `https://wmad-library-backend-six.vercel.app/api/books/${id}`;
   const Token = localStorage.getItem("token");
   const obj = {
     method: "GET",

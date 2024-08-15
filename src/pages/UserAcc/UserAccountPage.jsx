@@ -8,7 +8,7 @@ const UserAccountPage = () => {
   const { id } = useParams();
   const navigate = useNavigate(); 
   const token = localStorage.getItem('token');
-  const URL = `http://localhost:3000/api/user_accounts/${id}`;
+  const URL = `https://wmad-library-backend-six.vercel.app/api/user_accounts/${id}`;
 
   useEffect(() => {
     const fetchData = async () => {

@@ -6,7 +6,7 @@ const MemberInfo = () => {
   const [information, setInformation] = useState();
   const { memberID } = useParams();
   const navigate = useNavigate();
-  const url = `http://localhost:3000/api/members/${memberID}`;
+  const url = `https://wmad-library-backend-six.vercel.app/api/members/${memberID}`;
   const token = localStorage.getItem("token");
 
   useEffect(() => {

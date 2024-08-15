@@ -10,7 +10,7 @@ export default function ViewBookIssueInformation() {
     useEffect(() => {
         const fetchBookIssue = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/book_issues/${id}`);
+                const response = await fetch(`https://wmad-library-backend-six.vercel.app/api/book_issues/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch the book issue information.");
                 }
